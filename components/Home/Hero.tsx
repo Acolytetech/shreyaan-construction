@@ -3,8 +3,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function HeroSection() {
+   const [navHeight, setNavHeight] = useState(0);
+
+  useEffect(() => {
+    // Listen for header height event
+    const handleHeaderHeight = (e: any) => {
+      setNavHeight(e.detail);
+    };
+
+    window.addEventListener("headerHeight", handleHeaderHeight);
+
+    return () => {
+      window.removeEventListener("headerHeight", handleHeaderHeight);
+    };
+  }, []);
   return (
     <section className="relative w-full h-[90vh] flex items-center justify-center text-center overflow-hidden">
 
@@ -13,7 +28,7 @@ export default function HeroSection() {
         initial={{ scale: 1.2, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.6, ease: "easeOut" }}
-        className="absolute inset-0"
+        className="fixed inset-0"
       >
         <Image
           src="/img/hero1.avif"
@@ -33,17 +48,20 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-3xl px-4">
+      <div className="relative z-10 max-w-3xl px-4 "
+      style={{ marginTop: navHeight + 0 }}
+      >
         
         {/* Heading Animation */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="text-3xl md:text-5xl font-bold text-white mb-4 leading-snug drop-shadow-lg"
-        >
-          Shreyaan Constructions & Media Projects Pvt. Ltd.
-        </motion.h1>
+      <motion.h1
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1, ease: "easeOut" }}
+  className="text-3xl md:text-5xl font-bold mb-4 leading-snug drop-shadow-lg
+             text-transparent bg-clip-text animate-gradient"
+>
+  Shreyaan Constructions & Media Projects Pvt. Ltd.{navHeight}
+</motion.h1>
 
         {/* Subheading Animation */}
         <motion.p
@@ -68,7 +86,7 @@ export default function HeroSection() {
                 boxShadow: "0px 0px 18px rgba(0,0,0, 0.3)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-black hover:bg-black/80 text-white px-8 py-3 rounded-xl text-lg font-semibold transition-all"
+              className="bg-orange-600 hover:bg-black/80 text-white px-8 py-3 rounded-xl text-lg font-semibold transition-all"
             >
               Contact Us
             </motion.button>
