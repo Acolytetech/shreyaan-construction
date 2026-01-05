@@ -16,20 +16,20 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="relative group w-full h-80 md:h-[430px] rounded-xl overflow-hidden shadow-xl"
+          className="relative group  w-full h-80 md:h-[430px] rounded-xl overflow-hidden shadow-xl"
         >
           {/* Gradient Border Left Line */}
 
           {/* Image */}
-          <Image
+          {/* <Image
             src="/img/about1.png"
             alt="About Shreyaan Constructions"
             fill
             className="object-cover transform group-hover:scale-105 transition-all duration-700"
-          />
-
+          /> */}
+<iframe src="https://lottie.host/embed/443913a5-1f10-4381-b3f1-abce6bec3f57/4gb2gNlvQX.lottie" className="!bg-white w-full h-full scale-125"></iframe>
           {/* Overlay Glass Effect */}
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-all"></div>
+          {/* <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-all"></div> */}
         </motion.div>
 
         {/* RIGHT CONTENT */}
