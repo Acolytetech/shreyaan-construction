@@ -1,38 +1,35 @@
 "use client";
 
 import Link from "next/link";
-
 import { motion } from "framer-motion";
 
 export default function AboutSection() {
   return (
     <section id="about" className="py-24 bg-gray-50 relative overflow-hidden">
+      {/* Background image */}
+      <div className="absolute z-10 inset-0 bg-[url('/img/aboutbg.png')] bg-cover bg-center "></div>
 
-      <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+      <div className=" relative max-w-7xl mx-auto px-20 grid md:grid-cols-2 gap-16 bg-white/70 rounded-2xl p-10 z-20 items-center">
 
-        {/* LEFT IMAGE BLOCK */}
+        {/* Left Image Block */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="relative group  w-full h-80 md:h-[430px] rounded-xl overflow-hidden shadow-xl"
+          className="relative group w-full h-80 md:h-[430px] rounded-xl overflow-hidden shadow-xl"
         >
-          {/* Gradient Border Left Line */}
-
-          {/* Image */}
-          {/* <Image
-            src="/img/about1.png"
-            alt="About Shreyaan Constructions"
-            fill
-            className="object-cover transform group-hover:scale-105 transition-all duration-700"
-          /> */}
-<iframe src="https://lottie.host/embed/443913a5-1f10-4381-b3f1-abce6bec3f57/4gb2gNlvQX.lottie" className="!bg-white w-full h-full scale-125"></iframe>
-          {/* Overlay Glass Effect */}
+          {/* Lottie Animation */}
+          <iframe
+            src="https://lottie.host/embed/443913a5-1f10-4381-b3f1-abce6bec3f57/4gb2gNlvQX.lottie"
+            className="bg-white w-full h-full scale-125 rounded-lg"
+            title="Lottie Animation"
+          />
+          {/* Optionally, you can add a gradient or overlay */}
           {/* <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-all"></div> */}
         </motion.div>
 
-        {/* RIGHT CONTENT */}
+        {/* Right Content */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -71,7 +68,6 @@ export default function AboutSection() {
             </motion.button>
           </Link>
         </motion.div>
-
       </div>
     </section>
   );

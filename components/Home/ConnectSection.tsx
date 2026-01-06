@@ -18,7 +18,7 @@ export default function ConnectSection() {
         {/* overlay */}
       <div className="absolute z-10 inset-0 bg-black/30"></div>
 
-      <div className="relative max-w-7xl mx-auto px-6 z-50">
+      <div className="relative max-w-7xl mx-auto px-6 z-20">
         {/* HEADER */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-6 mb-12">
           <div>
