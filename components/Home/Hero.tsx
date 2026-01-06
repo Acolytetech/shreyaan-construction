@@ -170,10 +170,10 @@ export default function HeroSection() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="relative w-full h-[420px] rounded-2xl overflow-hidden border border-white/20 shadow-xl shadow-white/30"
+          className="relative w-full h-[520px] rounded-2xl overflow-hidden border border-white/20 shadow-xl shadow-white/30"
         >
           <Image
-            src="/img/hero1.avif"
+            src="/img/heroleft.webp"
             alt="Construction Site"
             fill
             priority

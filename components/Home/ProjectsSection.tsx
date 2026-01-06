@@ -153,7 +153,7 @@ export default function ProjectsSection() {
         </h2>
 
         {/* Navigation */}
-        <div className="absolute right-16 bottom-20 z-50 flex gap-4">
+        <div className="absolute right-16 bottom-30 z-50 flex gap-4">
           <button className="swiper-button-prev-custom w-12 h-12 bg-blue-950 border border-white/30 rounded-full">
             ↑
           </button>

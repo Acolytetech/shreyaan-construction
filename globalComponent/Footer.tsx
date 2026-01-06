@@ -9,14 +9,14 @@ export default function Footer() {
     <footer className="relative overflow-hidden text-white">
       {/* ===== BACKGROUND IMAGE ===== */}
       <div className="absolute inset-0 -z-10">
-        <Image
+        {/* <Image
           src="/img/herobg3.avif" // 👈 add your footer background image
           alt="Footer Background"
           fill
           className="object-cover"
-        />
+        /> */}
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-blue-950" />
       </div>
 
       {/* ===== CONTENT ===== */}
@@ -34,12 +34,15 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Link href="/">
+            <Link href="/" className="flex flex-row gap-2 items-center justify-center">
               <img
                 src="/img/logo1.png"
-                className="h-20 md:h-24 w-auto mb-4"
+                className="h-20 md:h-24 md:w-24 w-auto mb-4 bg-white rounded-full"
                 alt="Logo"
               />
+              <h2 className="text-xl font-bold">
+                Shreyaan Constructions & Media Projects Pvt. Ltd.
+              </h2>
             </Link>
 
             <p className="text-gray-300 leading-relaxed">

@@ -3,7 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/globalComponent/Header";
 import Footer from "@/globalComponent/Footer";
+import { PopupProvider } from "@/globalComponent/PopupContext";
+import PopupForm from "@/globalComponent/PopupForm";
 
+// Load fonts from Google Fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,9 +32,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer/>
+        {/* Wrap everything with the PopupProvider to manage popup state globally */}
+        <PopupProvider>
+          {/* Header is globally available */}
+          <Header />
+<PopupForm />
+          {/* Injected page content */}
+          {children}
+
+          {/* Footer is globally available */}
+          <Footer />
+        </PopupProvider>
       </body>
     </html>
   );

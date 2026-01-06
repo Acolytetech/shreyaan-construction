@@ -29,7 +29,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative py-24 bg-[#0B0F17] text-white overflow-hidden">
+    <section className="relative py-24 bg-[#e8ebf1] text-white overflow-hidden">
 
       {/* Heading */}
       <motion.h2
@@ -37,7 +37,7 @@ export default function WhyChooseUs() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="text-4xl font-bold text-center mb-14"
+        className="text-4xl font-bold text-center text-black mb-14"
       >
         Why Choose <span className="text-blue-500">Shreyaan Construction?</span>
       </motion.h2>

@@ -49,7 +49,7 @@ const BuildingExcellenceSection = () => {
           >
             {/* image  */}
             <div className="bg-gray-200 border border-gray-300 rounded-lg overflow-hidden">
-              <img src="/img/herobg1.avif" alt="Luxury Home" className="w-full h-48 object-cover" />
+              <img src="/img/p1.jpg" alt="Luxury Home" className="w-full h-60 object-cover" />
             </div>
 
             <div className=" text-black py-6 px-8  ">
@@ -74,7 +74,7 @@ const BuildingExcellenceSection = () => {
           >
             {/* image  */}
             <div className="bg-gray-200 border border-gray-300 rounded-lg overflow-hidden">
-              <img src="/img/herobg1.avif" alt="Luxury Home" className="w-full h-48 object-cover" />
+              <img src="/img/p2.jpg" alt="Luxury Home" className="w-full h-60 object-cover" />
             </div>
 
             <div className=" text-black py-6 px-8  ">
@@ -98,7 +98,7 @@ const BuildingExcellenceSection = () => {
           >
             {/* image  */}
             <div className="bg-gray-200 border border-gray-300 rounded-lg overflow-hidden">
-              <img src="/img/herobg1.avif" alt="Luxury Home" className="w-full h-48 object-cover" />
+              <img src="/img/p3.jpg" alt="Luxury Home" className="w-full h-60 object-cover" />
             </div>
 
             <div className=" text-black py-6 px-8  ">

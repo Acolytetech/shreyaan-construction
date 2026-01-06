@@ -3,14 +3,27 @@
 import { Phone, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
 
 export default function ConnectSection() {
+    
   return (
-    <section className="relative py-20 bg-[#f3f3f3]">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative py-20 bg-[#f3f3f3]"
+    // bg image 
+     style={{
+      backgroundImage: 'url("/img/s1.webp")',
+      backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        
+    }}
+    >
+        {/* overlay */}
+      <div className="absolute z-10 inset-0 bg-black/30"></div>
+
+      <div className="relative max-w-7xl mx-auto px-6 z-50">
         {/* HEADER */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-6 mb-12">
           <div>
-            <h2 className="text-3xl font-bold mb-2 text-[#0f1f3a]">Connect With Us</h2>
-            <p className="text-gray-600 max-w-md">
+            <h2 className="text-3xl font-bold mb-2 text-white">Connect With Us</h2>
+            <p className="text-gray-200 text-lg max-w-md">
               For any inquiries regarding our services, feel free to reach out
               to us using the details below.
             </p>
@@ -33,8 +46,8 @@ export default function ConnectSection() {
         {/* MAIN GRID */}
         <div className="grid lg:grid-cols-3 gap-8">
           {/* CONTACT FORM */}
-          <div className="lg:col-span-2 bg-white rounded-2xl p-8 shadow-lg">
-            <form className="grid sm:grid-cols-2 gap-6 text-[#0f1f3a] ">
+          <div className="lg:col-span-2 bg-black/40 rounded-2xl p-8 shadow-lg">
+            <form className="grid sm:grid-cols-2 gap-6 text-[#fff] ">
               <div>
                 <label className="font-medium">Full Name</label>
                 <input
@@ -116,7 +129,7 @@ export default function ConnectSection() {
                 <input
                   type="email"
                   placeholder="Email"
-                  className="flex-1 h-10 rounded-lg px-3 text-black outline-none"
+                  className="flex-1 h-10 rounded-lg px-3 bg-white text-black outline-none"
                 />
                 <button className="bg-orange-500 hover:bg-orange-600 px-4 rounded-lg font-semibold">
                   Subscribe

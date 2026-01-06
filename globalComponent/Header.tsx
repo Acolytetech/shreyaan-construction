@@ -4,10 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { usePopup } from "./PopupContext";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  // Popup Context
+  const { openPopup } = usePopup();
 
   const headerRef = useRef<HTMLDivElement>(null);
 
@@ -56,7 +59,7 @@ export default function Header() {
 
   const navItems = [
     { name: "Home", id: "home" },
-    { name: "About", id: "about" },
+    { name: "About", id: "/about" },
     { name: "Services", id: "services" },
     { name: "Projects", id: "projects" },
     { name: "Contact", id: "contact" },
@@ -88,7 +91,7 @@ export default function Header() {
       </div>
 
       {/* ---------- MAIN NAV ---------- */}
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-10 ">
+      <div className=" mx-auto flex items-center justify-between px-4 md:px-10 ">
         <Link href="/">
           <img src="/img/logo1.png" className="h-20 md:h-24 w-auto" />
         </Link>
@@ -98,7 +101,7 @@ export default function Header() {
           {navItems.map((item) => (
             <Link
               key={item.id}
-              href={item.id === "home" ? "/" : `#${item.id}`}
+              href={item.id === "home" ? "/" : `${item.id}`}
               className={`relative pb-1 transition ${
                 activeSection === item.id
                   ? "text-blue-700 font-semibold"
@@ -113,8 +116,17 @@ export default function Header() {
               />
             </Link>
           ))}
+         
         </nav>
-
+ {/* contact button  */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => openPopup()}
+              className="bg-blue-900 hover:bg-blue-950 text-white px-8 py-2 rounded-full font-semibold shadow-lg"
+            >
+              Contact Us
+            </motion.button>
         {/* Mobile Button */}
         <button
           onClick={() => setOpen(!open)}
