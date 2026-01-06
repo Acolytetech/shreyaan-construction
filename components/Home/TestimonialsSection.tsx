@@ -62,13 +62,13 @@ const testimonials = [
 export default function TestimonialsSection() {
   return (
     <section
-      className="py-28 relative overflow-hidden"
-      style={{
-        backgroundImage:
-          'url("/img/background.jpg"), radial-gradient(circle at top left, rgba(0, 123, 255, 0.2), transparent 70%), radial-gradient(circle at bottom right, rgba(0, 255, 221, 0.2), transparent 70%)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
+      className="py-28 relative overflow-hidden bg-blue-950 "
+      // style={{
+      //   backgroundImage:
+      //     'url("/img/p4.jpg"), radial-gradient(circle at top left, rgba(0, 123, 255, 0.2), transparent 70%), radial-gradient(circle at bottom right, rgba(0, 255, 221, 0.2), transparent 20%)',
+      //   backgroundSize: 'cover',
+      //   backgroundPosition: 'center',
+      // }}
     >
       <motion.h2
         initial={{ opacity: 0, y: 40 }}
