@@ -37,7 +37,7 @@ const PopupForm = () => {
               <input className="w-full border rounded-lg px-4 py-2" placeholder="Phone Number" />
               <textarea className="w-full border rounded-lg px-4 py-2" rows={4} placeholder="Your Requirement" />
 
-              <button className="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700">
+              <button className="w-full py-3 bg-blue-900 text-white rounded-lg font-semibold hover:bg-blue-950">
                 Submit Inquiry
               </button>
             </form>

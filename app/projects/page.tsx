@@ -1,27 +1,30 @@
 "use client";
 
+import { usePopup } from "@/globalComponent/PopupContext";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function ProjectsPage() {
+    // popupcontext 
+  const { openPopup } = usePopup();
   // Simulate project data
   const projects = [
     {
       title: "Residential Construction",
       description: "We specialize in building luxurious residential properties.",
-      image: "/img/project1.jpg",
+      image: "/img/p3.jpg",
       link: "/projects/residential",
     },
     {
       title: "Commercial Buildings",
       description: "Constructing modern office spaces and business parks.",
-      image: "/img/project2.jpg",
+      image: "/img/p4.jpg",
       link: "/projects/commercial",
     },
     {
       title: "Architectural Design",
       description: "Transforming ideas into beautiful architectural designs.",
-      image: "/img/project3.jpg",
+      image: "/img/p2.jpg",
       link: "/projects/architectural-design",
     },
   ];
@@ -60,20 +63,19 @@ export default function ProjectsPage() {
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-48 object-cover"
+              className="w-full h-60 object-cover"
             />
             <div className="p-6">
               <h3 className="text-2xl font-semibold text-blue-900 mb-4">{project.title}</h3>
               <p className="text-gray-700 text-lg mb-4">{project.description}</p>
-              <Link href={project.link}>
                 <motion.button
+                    
+                    onClick={openPopup}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-blue-900 text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-blue-950 transition-all"
                 >
-                  View Details
-                </motion.button>
-              </Link>
+Inquiry Now                </motion.button>
             </div>
           </motion.div>
         ))}
