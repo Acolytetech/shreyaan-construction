@@ -48,3 +48,6 @@ body {
   background-size: 200% 200%;
   animation: gradientMove 3s linear infinite;
 }
+a , button{
+  cursor: pointer;
+}

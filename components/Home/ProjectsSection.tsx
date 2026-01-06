@@ -90,92 +90,199 @@
 // }
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
-const projects = [
+interface Project {
+  title: string;
+  subtitle: string;
+  description: string;
+  rating: number;
+  image: string;
+}
+
+const projects: Project[] = [
   {
     title: "Residential Construction",
+    subtitle: "Luxury Homes & Apartments",
+    description:
+      "We specialize in high-quality residential construction delivering modern, durable, and aesthetically designed homes. From planning to execution, every detail is crafted with precision, ensuring comfort, safety, and long-term value for homeowners.",
+    rating: 5,
     image: "/img/p1.jpg",
   },
   {
     title: "Commercial Buildings",
+    subtitle: "Smart Business Spaces",
+    description:
+      "Our commercial projects focus on functionality, scalability, and brand presence. We build offices, malls, and complexes that enhance productivity while maintaining architectural excellence.",
+    rating: 4,
     image: "/img/p2.jpg",
   },
   {
     title: "Interior & Fit-out",
+    subtitle: "Modern Interior Solutions",
+    description:
+      "From corporate interiors to luxury home fit-outs, we deliver premium interior solutions that combine creativity, comfort, and efficiency with world-class materials.",
+    rating: 5,
     image: "/img/p3.jpg",
   },
   {
     title: "Industrial Facilities",
+    subtitle: "Strong & Scalable Infrastructure",
+    description:
+      "We design and construct industrial facilities with a focus on safety, efficiency, and future expansion, meeting all regulatory and operational requirements.",
+    rating: 4,
     image: "/img/p4.jpg",
   },
 ];
 
 export default function ProjectsSection() {
+  const [open, setOpen] = useState<boolean>(false);
+  const [activeProject, setActiveProject] = useState<string | null>(null);
+
   return (
     <section id="projects" className="py-24 bg-[#061529] text-white relative">
-      <div className=" mx-auto px-6 ">
+      <div className="mx-auto px-6">
 
-        <h2 className="text-4xl font-bold text-center mb-10">Our Projects</h2>
+        <h2 className="text-4xl font-bold text-center mb-12">
+          Our Featured Projects
+        </h2>
 
-        {/* Navigation Buttons */}
-        <div className="absolute right-10 top-1/2 z-50 flex flex-col gap-4 -translate-y-1/2">
-          <button className="swiper-button-prev-custom w-12 h-12 bg-blue-950 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/40 transition">
+        {/* Navigation */}
+        <div className="absolute right-16 bottom-20 z-50 flex gap-4">
+          <button className="swiper-button-prev-custom w-12 h-12 bg-blue-950 border border-white/30 rounded-full">
             ↑
           </button>
-
-          <button className="swiper-button-next-custom w-12 h-12 bg-blue-950 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/40 transition">
+          <button className="swiper-button-next-custom w-12 h-12 bg-blue-950 border border-white/30 rounded-full">
             ↓
           </button>
         </div>
 
-        {/* Swiper Slider */}
         <Swiper
           direction="vertical"
           slidesPerView={1}
-          spaceBetween={30}
+          spaceBetween={40}
           modules={[Autoplay, Pagination, Navigation]}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
+          autoplay={{ delay: 4500 }}
           pagination={{ clickable: true }}
           navigation={{
             nextEl: ".swiper-button-next-custom",
             prevEl: ".swiper-button-prev-custom",
           }}
-          loop={true}
-          className="h-[70vh] relative"
+          loop
+          className="h-[75vh]"
         >
           {projects.map((project, index) => (
             <SwiperSlide key={index}>
-              <div className="relative w-full h-[70vh] rounded-2xl overflow-hidden shadow-xl group">
+              <div className="relative h-[75vh] rounded-3xl overflow-hidden">
 
-                {/* Background Image */}
+                {/* Image */}
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-[2000ms] group-hover:scale-110"
+                  className="object-cover"
                 />
 
-                {/* Text Container */}
-                <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-                  <div className="px-6 py-3 bg-white/20 backdrop-blur-lg border border-white/30 rounded-xl">
-                    <h3 className="text-2xl font-semibold drop-shadow-lg">
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/40" />
+
+                {/* LEFT CONTENT */}
+                <div className="relative z-10 h-full flex items-center max-w-7xl mx-auto">
+                  <div className="ml-10 max-w-xl bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-10">
+
+                    <span className="uppercase tracking-widest text-sm text-blue-300">
+                      Our Expertise
+                    </span>
+
+                    <h3 className="text-4xl font-bold mt-2 mb-2">
                       {project.title}
                     </h3>
+
+                    <p className="text-blue-300 text-xl mb-4">
+                      {project.subtitle}
+                    </p>
+
+                    {/* Rating */}
+                    <div className="flex mb-5">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <span
+                          key={i}
+                          className={`text-2xl ${
+                            i < project.rating
+                              ? "text-yellow-400"
+                              : "text-gray-500"
+                          }`}
+                        >
+                          ★
+                        </span>
+                      ))}
+                    </div>
+
+                    <p className="text-gray-200 text-lg leading-relaxed mb-6">
+                      {project.description}
+                    </p>
+
+                    {/* Feature Points */}
+                    <ul className="space-y-2 text-gray-300 mb-6">
+                      <li>✔ Premium Materials & Finish</li>
+                      <li>✔ On-time Project Delivery</li>
+                      <li>✔ Experienced Engineering Team</li>
+                    </ul>
+
+                    <button
+                      onClick={() => {
+                        setActiveProject(project.title);
+                        setOpen(true);
+                      }}
+                      className="px-8 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 transition font-semibold"
+                    >
+                      Inquiry Now
+                    </button>
                   </div>
                 </div>
-
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
-
       </div>
+
+      {/* MODAL */}
+      {open && (
+        <div className="fixed inset-0 z-[999] bg-black/70 flex items-center justify-center px-4">
+          <div className="bg-white text-black rounded-2xl w-full max-w-lg p-8 relative">
+            <button
+              onClick={() => setOpen(false)}
+              className="absolute right-4 top-4 text-xl"
+            >
+              ✕
+            </button>
+
+            <h3 className="text-2xl font-bold mb-2">
+              Project Inquiry
+            </h3>
+
+            <p className="text-sm text-gray-600 mb-6">
+              Interested in <b>{activeProject}</b>? Fill the form below.
+            </p>
+
+            <form className="space-y-4">
+              <input className="w-full border rounded-lg px-4 py-2" placeholder="Full Name" />
+              <input className="w-full border rounded-lg px-4 py-2" placeholder="Email Address" />
+              <input className="w-full border rounded-lg px-4 py-2" placeholder="Phone Number" />
+              <textarea className="w-full border rounded-lg px-4 py-2" rows={4} placeholder="Your Requirement" />
+
+              <button className="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700">
+                Submit Inquiry
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

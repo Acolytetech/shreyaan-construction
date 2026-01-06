@@ -39,7 +39,7 @@ export default function AboutSection() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-extrabold text-black mb-6 leading-tight">
+          <h2 className="text-4xl font-extrabold text-blue-900 mb-6 leading-tight">
             About Us
           </h2>
 
@@ -65,7 +65,7 @@ export default function AboutSection() {
             <motion.button
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-black text-white px-10 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-2xl transition-all"
+              className="bg-blue-900 text-white px-10 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-2xl transition-all"
             >
               Contact Us
             </motion.button>
