@@ -60,7 +60,7 @@ export default function Header() {
   const navItems = [
     { name: "Home", id: "home" },
     { name: "About", id: "/about" },
-    { name: "Services", id: "services" },
+    { name: "Services", id: "/services" },
     { name: "Projects", id: "projects" },
     { name: "Contact", id: "contact" },
   ];

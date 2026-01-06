@@ -84,9 +84,9 @@ export default function AboutPage() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7 }}
-            src="/img/p3.jpg"
+            src="/img/p2.jpg"
             alt="About Us Image"
-            className="rounded-lg shadow-lg max-w-full h-auto"
+            className="rounded-lg shadow-lg max-w-full h-auto "
           />
         </div>
 
