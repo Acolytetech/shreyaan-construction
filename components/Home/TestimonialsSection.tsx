@@ -75,7 +75,7 @@ export default function TestimonialsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="text-4xl font-bold text-center text-white mb-16 tracking-wide"
+        className="text-2xl  md:text-4xl font-bold text-center text-white mb-16 tracking-wide"
       >
         What Our Satisfied Customers Say About Us
       </motion.h2>
@@ -158,7 +158,7 @@ navigation={{
           </SwiperSlide>
         ))}
            {/* Navigation Buttons */}
-<div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-6 z-20 pointer-events-none">
+<div className="absolute hidden inset-y-0 left-0 right-0 md:flex items-center justify-between px-6 z-20 pointer-events-none">
   <button className="swiper-button-prev-custom pointer-events-auto w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xl hover:bg-white/30 transition">
     ‹
   </button>

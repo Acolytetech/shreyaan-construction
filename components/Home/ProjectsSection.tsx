@@ -90,7 +90,7 @@
 // }
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
@@ -141,46 +141,64 @@ const projects: Project[] = [
 ];
 
 export default function ProjectsSection() {
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState(false);
   const [activeProject, setActiveProject] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
-    <section id="projects" className="py-24 bg-[#061529] text-white relative">
-      <div className="mx-auto px-6">
+    <section
+      id="projects"
+      className="py-16 md:py-24 bg-[#061529] text-white relative"
+    >
+      <div className="mx-auto px-4 md:px-6">
 
-        <h2 className="text-4xl font-bold text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 md:mb-12">
           Our Featured Projects
         </h2>
 
-        {/* Navigation */}
-        <div className="absolute right-16 bottom-30 z-50 flex gap-4">
-          <button className="swiper-button-prev-custom w-12 h-12 bg-blue-950 border border-white/30 rounded-full">
+        {/* Desktop Navigation Buttons */}
+        <div className="hidden md:flex absolute right-16 bottom-32 z-50 gap-4">
+          <button className="swiper-button-prev-custom w-12 h-12 bg-blue-950 border border-white/30 rounded-full flex items-center justify-center">
             ↑
           </button>
-          <button className="swiper-button-next-custom w-12 h-12 bg-blue-950 border border-white/30 rounded-full">
+          <button className="swiper-button-next-custom w-12 h-12 bg-blue-950 border border-white/30 rounded-full flex items-center justify-center">
             ↓
           </button>
         </div>
 
         <Swiper
-          direction="vertical"
+          direction={isMobile ? "horizontal" : "vertical"}
           slidesPerView={1}
-          spaceBetween={40}
+          spaceBetween={30}
           modules={[Autoplay, Pagination, Navigation]}
           autoplay={{ delay: 4500 }}
           pagination={{ clickable: true }}
-          navigation={{
-            nextEl: ".swiper-button-next-custom",
-            prevEl: ".swiper-button-prev-custom",
-          }}
+          navigation={
+            isMobile
+              ? false
+              : {
+                  nextEl: ".swiper-button-next-custom",
+                  prevEl: ".swiper-button-prev-custom",
+                }
+          }
           loop
-          className="h-[75vh]"
+          className="h-auto md:h-[75vh]"
         >
           {projects.map((project, index) => (
             <SwiperSlide key={index}>
-              <div className="relative h-[75vh] rounded-3xl overflow-hidden">
+              <div className="relative h-[600px] md:h-[75vh] rounded-2xl md:rounded-3xl overflow-hidden">
 
-                {/* Image */}
+                {/* Background Image */}
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -189,30 +207,30 @@ export default function ProjectsSection() {
                 />
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 bg-black/50" />
 
-                {/* LEFT CONTENT */}
-                <div className="relative z-10 h-full flex items-center max-w-7xl mx-auto">
-                  <div className="ml-10 max-w-xl bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-10">
+                {/* Content */}
+                <div className="relative z-10 h-full flex items-center justify-center md:justify-start px-4 md:px-0 max-w-7xl mx-auto">
+                  <div className="w-full md:ml-10 md:max-w-xl bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 md:p-10">
 
-                    <span className="uppercase tracking-widest text-sm text-blue-300">
+                    <span className="uppercase tracking-widest text-xs md:text-sm text-blue-300">
                       Our Expertise
                     </span>
 
-                    <h3 className="text-4xl font-bold mt-2 mb-2">
+                    <h3 className="text-2xl md:text-4xl font-bold mt-2 mb-2">
                       {project.title}
                     </h3>
 
-                    <p className="text-blue-300 text-xl mb-4">
+                    <p className="text-blue-300 text-lg md:text-xl mb-4">
                       {project.subtitle}
                     </p>
 
                     {/* Rating */}
-                    <div className="flex mb-5">
+                    <div className="flex mb-4">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <span
                           key={i}
-                          className={`text-2xl ${
+                          className={`text-xl md:text-2xl ${
                             i < project.rating
                               ? "text-yellow-400"
                               : "text-gray-500"
@@ -223,12 +241,11 @@ export default function ProjectsSection() {
                       ))}
                     </div>
 
-                    <p className="text-gray-200 text-lg leading-relaxed mb-6">
+                    <p className="text-gray-200 text-sm md:text-lg leading-relaxed mb-4 md:mb-6">
                       {project.description}
                     </p>
 
-                    {/* Feature Points */}
-                    <ul className="space-y-2 text-gray-300 mb-6">
+                    <ul className="space-y-1 md:space-y-2 text-gray-300 text-sm md:text-base mb-4 md:mb-6">
                       <li>✔ Premium Materials & Finish</li>
                       <li>✔ On-time Project Delivery</li>
                       <li>✔ Experienced Engineering Team</li>
@@ -239,10 +256,11 @@ export default function ProjectsSection() {
                         setActiveProject(project.title);
                         setOpen(true);
                       }}
-                      className="px-8 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 transition font-semibold"
+                      className="w-full md:w-auto px-6 py-2 md:px-8 md:py-3 rounded-xl bg-blue-600 hover:bg-blue-700 transition font-semibold"
                     >
                       Inquiry Now
                     </button>
+
                   </div>
                 </div>
               </div>
@@ -254,7 +272,7 @@ export default function ProjectsSection() {
       {/* MODAL */}
       {open && (
         <div className="fixed inset-0 z-[999] bg-black/70 flex items-center justify-center px-4">
-          <div className="bg-white text-black rounded-2xl w-full max-w-lg p-8 relative">
+          <div className="bg-white text-black rounded-2xl w-full max-w-lg p-6 md:p-8 relative">
             <button
               onClick={() => setOpen(false)}
               className="absolute right-4 top-4 text-xl"
@@ -262,7 +280,7 @@ export default function ProjectsSection() {
               ✕
             </button>
 
-            <h3 className="text-2xl font-bold mb-2">
+            <h3 className="text-xl md:text-2xl font-bold mb-2">
               Project Inquiry
             </h3>
 
@@ -271,10 +289,23 @@ export default function ProjectsSection() {
             </p>
 
             <form className="space-y-4">
-              <input className="w-full border rounded-lg px-4 py-2" placeholder="Full Name" />
-              <input className="w-full border rounded-lg px-4 py-2" placeholder="Email Address" />
-              <input className="w-full border rounded-lg px-4 py-2" placeholder="Phone Number" />
-              <textarea className="w-full border rounded-lg px-4 py-2" rows={4} placeholder="Your Requirement" />
+              <input
+                className="w-full border rounded-lg px-4 py-2"
+                placeholder="Full Name"
+              />
+              <input
+                className="w-full border rounded-lg px-4 py-2"
+                placeholder="Email Address"
+              />
+              <input
+                className="w-full border rounded-lg px-4 py-2"
+                placeholder="Phone Number"
+              />
+              <textarea
+                className="w-full border rounded-lg px-4 py-2"
+                rows={4}
+                placeholder="Your Requirement"
+              />
 
               <button className="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700">
                 Submit Inquiry

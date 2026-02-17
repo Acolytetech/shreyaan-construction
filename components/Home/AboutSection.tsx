@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 bg-gray-50 relative overflow-hidden">
+    <section id="about" className="md:py-24 bg-gray-50 relative overflow-hidden">
       {/* Background image */}
       <div className="absolute z-10 inset-0 bg-[url('/img/aboutbg.png')] bg-cover bg-center "></div>
 
-      <div className=" relative max-w-7xl mx-auto px-20 grid md:grid-cols-2 gap-16 bg-white/70 rounded-2xl p-10 z-20 items-center">
+      <div className=" relative max-w-7xl mx-auto md:px-20 grid md:grid-cols-2 gap-16 bg-white/70 rounded-2xl p-10 z-20 items-center">
 
         {/* Left Image Block */}
         <motion.div

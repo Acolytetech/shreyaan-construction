@@ -37,7 +37,7 @@ export default function WhyChooseUs() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="text-4xl font-bold text-center text-black mb-14"
+        className="text-3xl md:text-4xl font-bold text-center text-black mb-14"
       >
         Why Choose <span className="text-blue-500">Shreyaan Construction?</span>
       </motion.h2>

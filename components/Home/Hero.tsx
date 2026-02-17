@@ -25,7 +25,7 @@ const fadeUp: Variants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: [0.16, 1, 0.3, 1], // easeOut
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 };
@@ -53,6 +53,7 @@ const fadeRight: Variants = {
     },
   },
 };
+
 const services = [
   {
     id: "01",
@@ -80,25 +81,35 @@ export default function HeroSection() {
   const [navHeight, setNavHeight] = useState(0);
 
   useEffect(() => {
-    const handleHeaderHeight = (e: any) => {
-      setNavHeight(e.detail);
-    };
+  const setHeaderHeight = () => {
+    const header = document.querySelector("header");
+    if (header) {
+      setNavHeight(header.offsetHeight);
+    }
+  };
 
-    window.addEventListener("headerHeight", handleHeaderHeight);
-    return () =>
-      window.removeEventListener("headerHeight", handleHeaderHeight);
-  }, []);
+  setHeaderHeight(); // initial load
 
+  window.addEventListener("resize", setHeaderHeight);
+
+  return () => {
+    window.removeEventListener("resize", setHeaderHeight);
+  };
+}, []);
+console.log(`navbarhieght : ${navHeight}`)
   return (
     <section
       className="relative w-full overflow-hidden"
       style={{ paddingTop: navHeight }}
     >
-      {/* ===== BACKGROUND IMAGE (SLOW ZOOM) ===== */}
+      {/* ===== BACKGROUND IMAGE (CINEMATIC LOOP ZOOM) ===== */}
       <motion.div
-        initial={{ scale: 1 }}
-        animate={{ scale: 1.08 }}
-        transition={{ duration: 20, ease: "linear" }}
+        animate={{ scale: [1, 1.08, 1] }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "linear",
+        }}
         className="absolute inset-0 -z-10"
       >
         <Image
@@ -116,20 +127,20 @@ export default function HeroSection() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center pt-24 pb-36"
+        className="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center pt-20 md:pt-24 pb-20 md:pb-36"
       >
         {/* LEFT CONTENT */}
         <motion.div variants={fadeLeft} className="text-white">
           <motion.p
             variants={fadeUp}
-            className="uppercase text-sm tracking-widest text-orange-300 mb-3"
+            className="uppercase text-xs sm:text-sm tracking-widest text-orange-300 mb-3"
           >
             Let’s Build Your Dream House
           </motion.p>
 
           <motion.h1
             variants={fadeUp}
-            className="text-3xl md:text-5xl font-bold leading-tight mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6"
           >
             We’re The Best <br />
             <span className="text-orange-400">
@@ -139,7 +150,7 @@ export default function HeroSection() {
 
           <motion.p
             variants={fadeUp}
-            className="text-gray-200 text-lg mb-8 max-w-xl"
+            className="text-gray-200 text-base md:text-lg mb-8 max-w-xl"
           >
             Shreyaan Constructions & Media Projects Pvt. Ltd. delivers
             excellence in civil works, infrastructure, tenders and media
@@ -151,7 +162,7 @@ export default function HeroSection() {
               <motion.button
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-full font-semibold shadow-xl"
+                className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-full font-semibold shadow-xl transition"
               >
                 Contact Us
               </motion.button>
@@ -162,15 +173,13 @@ export default function HeroSection() {
         {/* RIGHT IMAGE (FLOAT EFFECT) */}
         <motion.div
           variants={fadeRight}
-          animate={{
-            y: [0, -10, 0],
-          }}
+          animate={{ y: [0, -12, 0] }}
           transition={{
             duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="relative w-full h-[520px] rounded-2xl overflow-hidden border border-white/20 shadow-xl shadow-white/30"
+          className="relative w-full h-[380px] md:h-[520px] rounded-2xl overflow-hidden border border-white/20 shadow-xl shadow-white/30"
         >
           <Image
             src="/img/heroleft.webp"
@@ -188,7 +197,7 @@ export default function HeroSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="relative z-10 max-w-7xl mx-auto px-6 pb-24"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pb-20 md:pb-24"
       >
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((item, index) => (
@@ -197,7 +206,7 @@ export default function HeroSection() {
               variants={fadeUp}
               whileHover={{ y: -12, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className={`rounded-xl p-6 backdrop-blur-md border border-white/20 shadow-lg
+              className={`rounded-xl p-6 backdrop-blur-md border border-white/20 shadow-lg transition
                 ${
                   index === 0
                     ? "bg-[#2e3a59] text-white"

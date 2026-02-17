@@ -3,81 +3,55 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, Phone, Menu, X } from "lucide-react";
 import { usePopup } from "./PopupContext";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-  // Popup Context
+  const [activePath, setActivePath] = useState("/");
   const { openPopup } = usePopup();
-
   const headerRef = useRef<HTMLDivElement>(null);
 
-  // 🔥 Dispatch Header Height (ROBUST)
+  // Dispatch header height
   const dispatchHeaderHeight = () => {
     if (!headerRef.current) return;
-
     requestAnimationFrame(() => {
       const height = headerRef.current!.offsetHeight;
-      window.dispatchEvent(
-        new CustomEvent("headerHeight", { detail: height })
-      );
+      window.dispatchEvent(new CustomEvent("headerHeight", { detail: height }));
     });
   };
 
-  // Initial + resize
   useEffect(() => {
     dispatchHeaderHeight();
     window.addEventListener("resize", dispatchHeaderHeight);
     return () => window.removeEventListener("resize", dispatchHeaderHeight);
   }, []);
 
-  // Mobile menu open/close → height changes
   useEffect(() => {
     dispatchHeaderHeight();
   }, [open]);
 
-  // 🔥 Active Section Observer
-  useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-
-    sections.forEach((sec) => observer.observe(sec));
-    return () => sections.forEach((sec) => observer.unobserve(sec));
-  }, []);
-
   const navItems = [
-    { name: "Home", id: "home" },
-    { name: "About", id: "/about" },
-    { name: "Services", id: "/services" },
-    { name: "Projects", id: "projects" },
-    { name: "Contact", id: "contact" },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Projects", path: "/projects" },
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 w-full z-50 bg-white backdrop-blur-xl shadow-md transition-all"
+      className="fixed top-0 left-0 w-full z-50 bg-white shadow-md"
     >
       {/* ---------- TOP BAR ---------- */}
-      <div className="h-8 md:h-12 bg-blue-950 text-white text-xs md:text-sm">
-        <div className="max-w-7xl mx-auto px-4 md:px-10 h-full flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1">
+      <div className="hidden md:block bg-blue-950 text-white text-sm">
+        <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between">
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-2">
               <Phone size={14} /> +91 9876543210
             </span>
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-2">
               <Mail size={14} /> info@shreyaan.com
             </span>
           </div>
@@ -91,19 +65,22 @@ export default function Header() {
       </div>
 
       {/* ---------- MAIN NAV ---------- */}
-      <div className=" mx-auto flex items-center justify-between px-4 md:px-10 ">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+
+        {/* Logo */}
         <Link href="/">
-          <img src="/img/logo1.png" className="h-20 md:h-24 w-auto" />
+          <img src="/img/logo1.png" className="h-16 md:h-20 w-auto" />
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex gap-8 text-gray-800 font-medium">
+        <nav className="hidden md:flex items-center gap-8 text-gray-800 font-medium">
           {navItems.map((item) => (
             <Link
-              key={item.id}
-              href={item.id === "home" ? "/" : `${item.id}`}
+              key={item.path}
+              href={item.path}
+              onClick={() => setActivePath(item.path)}
               className={`relative pb-1 transition ${
-                activeSection === item.id
+                activePath === item.path
                   ? "text-blue-700 font-semibold"
                   : ""
               }`}
@@ -111,28 +88,29 @@ export default function Header() {
               {item.name}
               <span
                 className={`absolute left-0 -bottom-1 h-[2px] bg-blue-600 transition-all duration-300 ${
-                  activeSection === item.id ? "w-full" : "w-0"
+                  activePath === item.path ? "w-full" : "w-0"
                 }`}
               />
             </Link>
           ))}
-         
         </nav>
- {/* contact button  */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => openPopup()}
-              className="bg-blue-900 hover:bg-blue-950 text-white px-8 py-2 rounded-full font-semibold shadow-lg"
-            >
-              Contact Us
-            </motion.button>
-        {/* Mobile Button */}
+
+        {/* Desktop Contact Button */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={openPopup}
+          className="hidden md:block bg-blue-900 hover:bg-blue-950 text-white px-6 py-2 rounded-full font-semibold shadow-lg"
+        >
+          Contact Us
+        </motion.button>
+
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-3xl"
+          className="md:hidden"
         >
-          ☰
+          {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
@@ -140,18 +118,22 @@ export default function Header() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="md:hidden bg-white/90 backdrop-blur-lg shadow-xl px-6 py-6 space-y-4"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white shadow-xl px-6 py-6 space-y-5"
           >
             {navItems.map((item) => (
               <Link
-                key={item.id}
-                href={item.id === "home" ? "/" : `#${item.id}`}
-                onClick={() => setOpen(false)}
+                key={item.path}
+                href={item.path}
+                onClick={() => {
+                  setActivePath(item.path);
+                  setOpen(false);
+                }}
                 className={`block text-lg ${
-                  activeSection === item.id
+                  activePath === item.path
                     ? "text-blue-700 font-semibold"
                     : ""
                 }`}
@@ -159,6 +141,17 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                setOpen(false);
+                openPopup();
+              }}
+              className="w-full bg-blue-900 text-white py-2 rounded-full font-semibold"
+            >
+              Contact Us
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>

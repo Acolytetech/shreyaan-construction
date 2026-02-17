@@ -77,7 +77,7 @@ export default function AboutPage() {
       </section>
 
       {/* Left and Right Content Section 2 */}
-      <section className="py-20 px-6 sm:px-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+      <section className="py-20 px-6 sm:px-10 max-w-7xl mx-auto flex md:grid flex-col-reverse md:grid-cols-2 gap-12">
         {/* Image Section */}
         <div className="flex items-center justify-center">
           <motion.img

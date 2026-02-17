@@ -55,10 +55,9 @@ export default function ContactPage() {
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
           We would love to hear from you! Whether you have questions about our services, need a quote, or just want to say hello, feel free to reach out using the form below or through our contact information.
         </p>
-      </section>
 
       {/* Contact Form Section */}
-      <section className="py-24 px-6 sm:px-10 max-w-7xl mx-auto grid gap-12 grid-cols-1 md:grid-cols-2">
+      <section className="pt-20 px-6 sm:px-10 max-w-7xl mx-auto grid gap-12 grid-cols-1 md:grid-cols-2">
         <div>
             <motion.img
                 initial={{ opacity: 0, y: 40 }}
@@ -66,19 +65,19 @@ export default function ContactPage() {
                 transition={{ duration: 0.7 }}
                 src="/img/p2.jpg"
                 alt="Contact Us"
-                className="w-full h-auto rounded-xl shadow-lg"
+                className="w-full h-[65vh] rounded-xl shadow-lg "
             />
         </div>
         <div className=" text-left">
 
-        <motion.h2
+        {/* <motion.h2
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           className="text-4xl font-semibold text-left text-blue-900 mb-12"
           >
           Get in Touch
-        </motion.h2>
+        </motion.h2> */}
 
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -155,6 +154,7 @@ export default function ContactPage() {
           )}
         </motion.div>
           </div>
+      </section>
       </section>
 
       {/* Contact Information Section */}
