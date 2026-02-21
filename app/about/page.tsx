@@ -90,6 +90,7 @@ export default function AboutPage() {
           />
         </div>
 
+
         {/* Text Section */}
         <div className="text-left">
           <motion.h2
