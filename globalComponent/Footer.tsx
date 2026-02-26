@@ -106,16 +106,30 @@ export default function Footer() {
           </motion.div>
         </motion.div>
 
-        {/* ===== BOTTOM BAR ===== */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-          className="text-center text-gray-400 mt-12 border-t border-white/20 pt-6 text-sm"
-        >
-          © {new Date().getFullYear()} Shreyaan Constructions & Media Projects Pvt.
-          Ltd. All rights reserved.
-        </motion.div>
+     {/* ===== BOTTOM BAR ===== */}
+<motion.div
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ duration: 1.2 }}
+  className="text-center text-gray-400 mt-12 border-t border-white/20 pt-6 text-sm space-y-2"
+>
+  <p>
+    © {new Date().getFullYear()} Shreyaan Constructions & Media Projects Pvt.
+    Ltd. All rights reserved.
+  </p>
+
+  <p>
+    Designed & Developed by{" "}
+    <a
+      href="https://startupflora.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-orange-400 hover:text-orange-300 transition font-medium"
+    >
+      StartupFlora
+    </a>
+  </p>
+</motion.div>
       </div>
     </footer>
   );

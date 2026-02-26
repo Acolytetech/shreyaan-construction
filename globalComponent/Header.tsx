@@ -51,6 +51,9 @@ export default function Header() {
             <span className="flex items-center gap-2">
               <Phone size={14} /> +91 9876543210
             </span>
+             <span className="flex items-center gap-2">
+              <Phone size={14} /> +91 9083099999
+            </span>
             <span className="flex items-center gap-2">
               <Mail size={14} /> info@shreyaan.com
             </span>

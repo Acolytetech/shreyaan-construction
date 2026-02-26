@@ -1,5 +1,6 @@
 "use client";
 
+import PromotersSection from "@/components/Home/PromotersSection";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -119,7 +120,7 @@ export default function AboutPage() {
           </motion.p>
         </div>
       </section>
-
+<PromotersSection/>
       {/* Vision Section */}
       <section className="bg-[#022D4D] text-white py-20 px-6 sm:px-10">
         <div className="max-w-7xl mx-auto text-center">
