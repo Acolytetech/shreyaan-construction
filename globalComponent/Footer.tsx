@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Phone } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -97,10 +98,16 @@ export default function Footer() {
                 vamshibakki33@gmail.com
               </span>
             </p>
-            <p className="text-gray-300">
-              Phone:{" "}
+            <p className="text-gray-300 flex text-lg">
+              <Phone/> : {" "}
               <span className="text-white">
-                8686110050
+                 +91 9876543210
+              </span>
+            </p>
+             <p className="text-gray-300 flex text-lg">
+             <Phone/>:{" "}
+              <span className="text-white">
+                +91 9083099999
               </span>
             </p>
           </motion.div>

@@ -177,7 +177,7 @@ export default function ContactPage() {
               className="text-lg text-gray-700 mb-6"
             >
               <h3 className="text-2xl font-semibold text-blue-900 mb-4">Visit Us</h3>
-              <p>1234 Construction Lane, Building City, Telangana, India</p>
+              <p> 2-8-533, First Flo, Middle Shutter, Indiranag, Reddicolony, Warangal, Hanamkonda, Telangana, India, 506011</p>
             </motion.div>
 
             <motion.div
@@ -188,6 +188,7 @@ export default function ContactPage() {
             >
               <h3 className="text-2xl font-semibold text-blue-900 mb-4">Call Us</h3>
               <p>+91 9876543210</p>
+              <p>+91 9083099999</p>
             </motion.div>
 
             <motion.div
@@ -207,7 +208,7 @@ export default function ContactPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7 }}
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.444412034419!2d78.473865!3d17.425289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb94c41a057d3d%3A0xb1695b5f9065b67b!2sShreyaan%20Constructions%20%26%20Media%20Projects%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1640627462747!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3794.3890775017003!2d79.56744607600515!3d18.007138282989594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3345200125ad9d%3A0x695e758fb43db290!2sC.%20P%20REDDY%20Complex%20Hanamkonda%201st%20Floor!5e0!3m2!1sen!2sin!4v1772176014212!5m2!1sen!2sin"
               className="w-full h-full border-0 rounded-lg"
               loading="lazy"
             ></motion.iframe>

@@ -5,7 +5,7 @@ import { UserCircle2 } from "lucide-react";
 
 const promoters = [
   {
-    name: "Suryakiran Varma Sangani",
+    name: "S Surya kiran Varma",
     role: "Director",
   },
   {

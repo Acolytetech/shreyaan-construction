@@ -112,8 +112,8 @@ export default function ConnectSection() {
             <div className="bg-white rounded-2xl p-5 md:p-6 shadow-lg text-center text-[#0f1f3a]">
               <Phone className="mx-auto mb-3" />
               <h4 className="font-semibold">CALL US</h4>
-              <p className="text-gray-600 mt-1 text-sm md:text-base">
-                +639-2145-251
+              <p className="text-gray-600 font-semibold mt-1 text-sm md:text-base">
+               S Surya Kiran Verma <br/> +91 9083099999
               </p>
             </div>
 
@@ -121,10 +121,10 @@ export default function ConnectSection() {
             <div className="bg-white rounded-2xl p-5 md:p-6 shadow-lg text-center text-[#0f1f3a]">
               <MapPin className="mx-auto mb-3" />
               <h4 className="font-semibold">VISIT US</h4>
-              <p className="text-gray-600 mt-1 text-sm">
-                13 43rd Ave. San Mateo,
+              <p className="text-gray-600 mt-1 text-sm font-semibold">
+                 2-8-533, First Flo, Middle Shutter, Indiranag, Reddicolony, Warangal, Hanamkonda, 
                 <br />
-                California
+                Telangana, India, 506011
               </p>
             </div>
 
