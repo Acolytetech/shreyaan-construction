@@ -122,7 +122,7 @@ export default function ConnectSection() {
               <MapPin className="mx-auto mb-3" />
               <h4 className="font-semibold">VISIT US</h4>
               <p className="text-gray-600 mt-1 text-sm font-semibold">
-                 2-8-533, First Flo, Middle Shutter, Indiranag, Reddicolony, Warangal, Hanamkonda, 
+                 2-8-533, First Flo, Middle Shutter, Indira nagar, Reddicolony,  Hanamkonda, 
                 <br />
                 Telangana, India, 506011
               </p>

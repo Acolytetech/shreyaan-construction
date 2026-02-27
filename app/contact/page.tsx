@@ -177,7 +177,7 @@ export default function ContactPage() {
               className="text-lg text-gray-700 mb-6"
             >
               <h3 className="text-2xl font-semibold text-blue-900 mb-4">Visit Us</h3>
-              <p> 2-8-533, First Flo, Middle Shutter, Indiranag, Reddicolony, Warangal, Hanamkonda, Telangana, India, 506011</p>
+              <p> 2-8-533, First Flo, Middle Shutter, Indira nagar, Reddicolony,  Hanamkonda, Telangana, India, 506011</p>
             </motion.div>
 
             <motion.div
