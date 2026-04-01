@@ -58,7 +58,7 @@ export default function AboutSection() {
             and large-scale job creation across Telangana and nearby states.
           </p>
 
-          <Link href="#contact">
+          <Link href="/contact">
             <motion.button
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}

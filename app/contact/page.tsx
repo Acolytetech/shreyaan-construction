@@ -187,7 +187,7 @@ export default function ContactPage() {
               className="text-lg text-gray-700 mb-6"
             >
               <h3 className="text-2xl font-semibold text-blue-900 mb-4">Call Us</h3>
-              <p>+91 9876543210</p>
+              <p>+91 8686110050</p>
               <p>+91 9083099999</p>
             </motion.div>
 

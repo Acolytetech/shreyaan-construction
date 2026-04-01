@@ -101,7 +101,7 @@ export default function Footer() {
             <p className="text-gray-300 flex text-lg">
               <Phone/> : {" "}
               <span className="text-white">
-                 +91 9876543210
+                 +91 8686110050
               </span>
             </p>
              <p className="text-gray-300 flex text-lg">

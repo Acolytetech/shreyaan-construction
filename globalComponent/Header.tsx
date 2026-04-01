@@ -49,7 +49,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2">
-              <Phone size={14} /> +91 9876543210
+              <Phone size={14} /> +91 8686110050
             </span>
              <span className="flex items-center gap-2">
               <Phone size={14} /> +91 9083099999
